@@ -10,4 +10,6 @@ class AssetsPathes {
   static const String practice = '${images}practice.png';
   static const String material = '${images}material.png';
   static const String manImage = '${images}man_image.png';
+  static const String manLogo = '${images}man_logo.png';
+  static const String whatsapp = '${images}whatsapp.svg';
 }

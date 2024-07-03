@@ -268,7 +268,7 @@ class _PlayVideoPageState extends State<PlayVideoPage> {
                               child: Icon(Icons.message),
                             ),
                             Text(
-                              "Message",
+                              "Doubts",
                               style: const TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 12,

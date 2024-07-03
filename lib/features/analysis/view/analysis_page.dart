@@ -23,7 +23,7 @@ class _AnalysisPageState extends State<AnalysisPage> {
                   ),
                 ),
                 width: Get.width,
-                height: 100,
+                height: 80,
                 child: const Padding(
                   padding: EdgeInsets.only(top: 35),
                   child: Center(

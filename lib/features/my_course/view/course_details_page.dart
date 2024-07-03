@@ -2,9 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:education_app/features/my_course/view/play_video_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../core/utils/shared/constants/assets_pathes.dart';
 import '../controller/my_course_controller.dart';
 
 class CourseDetailsPage extends StatefulWidget {
@@ -163,6 +165,136 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                 ),
               ),
               SizedBox(height: 16),
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 101,
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          color: Color(0xfff3dca6),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      Positioned(
+                          top: 0,
+                          left: 130,
+                          child: Icon(
+                            Icons.lock,
+                            size: 100,
+                            color: Colors.black26,
+                          )),
+                      Positioned(
+                        top: 15,
+                        left: 10,
+                        child: Text(
+                          "Upgrade and unlock the \nfull course",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontFamily: "interBold",
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 50,
+                          right: 10,
+                          child: Container(
+                        height: 38,
+                        width: 97,
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Color(0xffeb5443),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Upgrade",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: "interBold",
+                            ),
+                          ),
+                        ),
+                      ))
+                    ],
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  height: 101,
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    color: Color(0xffd9d5ff),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        " WhatsApp ലെ സഹായത്തിനായി",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontFamily: "interBold",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "8606017527",
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontFamily: "interBold",
+                            ),
+                          ),
+                          Container(
+                            height: 35,
+                            width: 146,
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: Color(0xff4caf50),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(AssetsPathes.whatsapp),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: Text(
+                                    "WhatsApp",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontFamily: "interBold",
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
               Expanded(
                 child: myCourseController.sections.value.isEmpty
                     ? const Center(
@@ -182,7 +314,14 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                              Get.to(PlayVideoPage(lessonId: myCourseController.sections.value[index].id.toString(), title: myCourseController.sections.value[index].title.toString(),));
+                              Get.to(PlayVideoPage(
+                                lessonId: myCourseController
+                                    .sections.value[index].id
+                                    .toString(),
+                                title: myCourseController
+                                    .sections.value[index].title
+                                    .toString(),
+                              ));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -246,7 +385,8 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                                       width: 20,
                                     ),
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
