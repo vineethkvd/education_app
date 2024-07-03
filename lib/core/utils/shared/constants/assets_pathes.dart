@@ -9,4 +9,5 @@ class AssetsPathes {
   static const String exam = '${images}exam.png';
   static const String practice = '${images}practice.png';
   static const String material = '${images}material.png';
+  static const String manImage = '${images}man_image.png';
 }

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:education_app/features/my_course/view/course_details_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -379,31 +380,64 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(21),
+                  padding: const EdgeInsets.all(10),
                   height: 325,
                   child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          3, // Adjust the number of columns as needed
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                      childAspectRatio:
-                          1.0, // Adjust the aspect ratio as needed
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 25.0,
+                      mainAxisSpacing: 25.0,
+                      childAspectRatio: 1.0,
                     ),
                     itemCount: myCourseController
                         .myCourseModel.value.data!.subjects!.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                              myCourseController.myCourseModel.value.data!
-                                      .subjects![index].icon ??
-                                  '',
+                      return InkWell(
+                        onTap: () {
+                          Get.to(
+                              CourseDetailsPage(
+                                sectionId: myCourseController.myCourseModel
+                                    .value.data!.subjects![index].id.toString(),
+                                courseId: myCourseController.myCourseModel.value
+                                    .data!.userdata!.courseId.toString(),
+                                courseName:
+                                    "${myCourseController.myCourseModel.value.data!.subjects![index].title}",
+                              ),
+                              transition: Transition.cupertino);
+                        },
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: AspectRatio(
+                                aspectRatio: 1.0,
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xffed617b),
+                                        Color(0xfff2859b)
+                                      ],
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(100)),
+                                  ),
+                                  child: Center(
+                                    child: Image.asset(AssetsPathes.manImage),
+                                  ),
+                                ),
+                              ),
                             ),
-                            fit: BoxFit.cover,
-                          ),
+                            Text(
+                              "${myCourseController.myCourseModel.value.data!.subjects![index].title}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff512e7e),
+                                fontFamily: "interRegular",
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
