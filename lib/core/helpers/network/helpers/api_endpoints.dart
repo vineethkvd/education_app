@@ -6,6 +6,6 @@ class ApiEndPoints {
   static const String levelsByCourse = 'levels_by_course';
   static const String courseId = '&course_id=';
   static const String sectionId = '&section_id=';
-
-  //https://trogon.info/tutorpro/edspark/api/levels_by_course?auth_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE5IiwidXNlcl9pZCI6IjE5Iiwicm9sZV9pZCI6IjIiLCJyb2xlX2xhYmVsIjoiVXNlciIsInBob25lIjoiOTk0NjgwMTEwMCJ9.D0tUEBGDi8gtc1vEK6GL4aFdwDEd6uBCpIQ7G0J5fEM&course_id=1&section_id=1
-}
+  static const String getLessonVideos = 'get_lesson_videos';
+  static const String lessonId = '&lesson_id=';
+  }

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:education_app/features/my_course/view/play_video_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -168,8 +169,8 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                         child: Text(
                           "No data available",
                           style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
                             color: Colors.black,
                             fontFamily: "interSemiBold",
                           ),
@@ -179,93 +180,106 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                         scrollDirection: Axis.vertical,
                         itemCount: myCourseController.sections.value.length,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              padding: EdgeInsets.all(12),
-                              height: 84,
-                              decoration: BoxDecoration(
-                                color: Colors
-                                    .white, // Set container background color to white
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Colors.white, // Border color
-                                  width: 2.0, // Border width
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey
-                                        .withOpacity(0.2), // Shadow color
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                    offset: Offset(
-                                        0, 3), // changes position of shadow
+                          return InkWell(
+                            onTap: () {
+                              Get.to(PlayVideoPage(
+                                lessonId: myCourseController
+                                    .sections.value[index].id
+                                    .toString(),
+                                title: myCourseController
+                                    .sections.value[index].title
+                                    .toString(),
+                              ));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                padding: EdgeInsets.all(12),
+                                height: 84,
+                                decoration: BoxDecoration(
+                                  color: Colors
+                                      .white, // Set container background color to white
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Colors.white, // Border color
+                                    width: 2.0, // Border width
                                   ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(70),
-                                    child: Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black12,
-                                      ),
-                                      child: CachedNetworkImage(
-                                        fit: BoxFit.cover,
-                                        imageUrl:
-                                            "https://${myCourseController.sections.value[index].thumbnail}",
-                                        placeholder: (context, url) =>
-                                            const CupertinoActivityIndicator(),
-                                        errorWidget: (context, url, error) =>
-                                            Container(
-                                          height: 10,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xff553283),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: const Icon(
-                                            CupertinoIcons.book,
-                                            color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey
+                                          .withOpacity(0.2), // Shadow color
+                                      spreadRadius: 2,
+                                      blurRadius: 5,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(70),
+                                      child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: Colors.black12,
+                                        ),
+                                        child: CachedNetworkImage(
+                                          fit: BoxFit.cover,
+                                          imageUrl:
+                                              "https://${myCourseController.sections.value[index].thumbnail}",
+                                          placeholder: (context, url) =>
+                                              const CupertinoActivityIndicator(),
+                                          errorWidget: (context, url, error) =>
+                                              Container(
+                                            height: 10,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xff553283),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: const Icon(
+                                              CupertinoIcons.book,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Day $index - Lesson $index  ",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 12,
-                                          color: Color(0xff553283),
-                                          fontFamily: "interSemiBold",
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Day $index - Lesson $index  ",
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 12,
+                                            color: Color(0xff553283),
+                                            fontFamily: "interSemiBold",
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "${myCourseController.sections.value[index].title}",
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 16,
-                                          color: Colors.black,
-                                          fontFamily: "interSemiBold",
+                                        Text(
+                                          "${myCourseController.sections.value[index].title}",
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
+                                            color: Colors.black,
+                                            fontFamily: "interSemiBold",
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           );
