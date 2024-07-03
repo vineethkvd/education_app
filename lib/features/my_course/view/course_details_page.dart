@@ -182,14 +182,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
-                              Get.to(PlayVideoPage(
-                                lessonId: myCourseController
-                                    .sections.value[index].id
-                                    .toString(),
-                                title: myCourseController
-                                    .sections.value[index].title
-                                    .toString(),
-                              ));
+                              Get.to(PlayVideoPage(lessonId: myCourseController.sections.value[index].id.toString(), title: myCourseController.sections.value[index].title.toString(),));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -253,8 +246,7 @@ class _CourseDetailsPageState extends State<CourseDetailsPage> {
                                       width: 20,
                                     ),
                                     Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [

@@ -79,6 +79,8 @@ class MyCourseController extends GetxController {
 
   //play video
   var lessonVideoModel = const LessonVideoModel().obs;
+  var videoTitle=''.obs;
+  var videoDuration=''.obs;
   Future<void> playVideo(
       {required String lessonId}) async {
     try {
